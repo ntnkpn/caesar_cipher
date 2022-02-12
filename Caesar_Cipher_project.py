@@ -1,15 +1,4 @@
-﻿# Запрос направления - шифрование или дешифрование
-# Язык алфавита
-# шаг сдвига (со сдвигом вправо)
-# y = (x + k) % n
-# x = (y - k) % n
-# x - символ открытого текста
-# y - символ шифрованного текста
-# n - количсетво символов (мощность алфавита)
-# k - ключ (шаг сдвига)
-#
-
-print('Программа шифрования/дешифрования сообщений с помощью шифра Цезаря'.center(230))
+﻿print('Программа шифрования/дешифрования сообщений с помощью шифра Цезаря'.center(230))
 print('Сперва выберете: шифруем или дешифруем текст? Напечатайте слово close или open ниже:')
 direction = input()  # Шифрование или дешифрование
 print('Выберите язык вводимого сообщения: английский - напечатайте en, или русский - напечатайте ru:')
@@ -66,6 +55,7 @@ def encryption_caesar(message, step):  # Расшифрование англий
             encrypted_message += message[i]
     return encrypted_message
 
-
-print('Результат:', decryption_caesar(user_message, shift_step))
-print('Результат:', encryption_caesar(user_message, shift_step))
+if direction == 'open':
+    print('Результат:', decryption_caesar(user_message, shift_step))
+elif direction == 'close':
+    print('Результат:', encryption_caesar(user_message, shift_step))
