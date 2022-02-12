@@ -8,7 +8,7 @@ shift_step = int(input())  # Шаг сдвига
 print('И, наконец, введите или вставьте сам текст сообщения:'.center(230))
 user_message = input()  # Вводимый текст
 
-# Логика выбора языка и выбор длины алфавита: 
+# Логика выбора языка и выбор длины алфавита:
 if language == 'en':
     alphabet_lenght = 26
     alph_lower = [chr(i) for i in range(97, 123)]
@@ -19,14 +19,15 @@ elif language == 'ru':
     alph_upper = [chr(i) for i in range(1040, 1072)]
 
 
-def decryption_caesar(message, step):  # Расшифрование 
+def decryption_caesar(message, step):  # Расшифрование
     decrypted_message = ''
     for i in range(len(message)):
         if message[i].isalpha():
             if message[i].isupper():
                 eng_character = alph_upper.index(message[i])
                 # расшифрованный символ upper
-                x = (eng_character - step) % alphabet_lenght # Формула для расшифрования
+                # Формула для расшифрования
+                x = (eng_character - step) % alphabet_lenght
                 decrypted_message += alph_upper[x]
             elif message[i].islower():
                 eng_character = alph_lower.index(message[i])
@@ -38,14 +39,15 @@ def decryption_caesar(message, step):  # Расшифрование
     return decrypted_message
 
 
-def encryption_caesar(message, step):  # Шифрование 
+def encryption_caesar(message, step):  # Шифрование
     encrypted_message = ''
     for i in range(len(message)):
         if message[i].isalpha():
             if message[i].isupper():
                 eng_character = alph_upper.index(message[i])
-                # расшифрованный символ upper
-                x = (eng_character + step) % alphabet_lenght # Формула для шифрования
+                # зашифрованный символ upper
+                # Формула для шифрования
+                x = (eng_character + step) % alphabet_lenght
                 encrypted_message += alph_upper[x]
             elif message[i].islower():
                 eng_character = alph_lower.index(message[i])
@@ -56,7 +58,10 @@ def encryption_caesar(message, step):  # Шифрование
             encrypted_message += message[i]
     return encrypted_message
 
+
 if direction == 'open':
-    print('Результат:'.center(200), decryption_caesar(user_message, shift_step).center(220))
+    print('Результат:'.center(200), decryption_caesar(
+        user_message, shift_step).center(220))
 elif direction == 'close':
-    print('Результат:'.center(200), encryption_caesar(user_message, shift_step).center(220))
+    print('Результат:'.center(200), encryption_caesar(
+        user_message, shift_step).center(220))
