@@ -1,22 +1,19 @@
-﻿  # Запрос направления - шифрование или дешифрование
-  # Язык алфавита
-  # шаг сдвига (со сдвигом вправо)
-  # y = (x + k) % n
-  # x = (y - k) % n
-  # x - символ открытого текста
-  # y - символ шифрованного текста
-  # n - количсетво символов (мощность алфавита)
-  # k - ключ (шаг сдвига)
-  #     
+﻿# Запрос направления - шифрование или дешифрование
+# Язык алфавита
+# шаг сдвига (со сдвигом вправо)
+# y = (x + k) % n
+# x = (y - k) % n
+# x - символ открытого текста
+# y - символ шифрованного текста
+# n - количсетво символов (мощность алфавита)
+# k - ключ (шаг сдвига)
+#
 
 
-
-
-
-direction = input() # Шифрование или дешифрование
-language = input() # Выбор языка en/ru
-shift_step = int(input()) # Шаг сдвига
-user_message = input() # Вводимый текст
+direction = input()  # Шифрование или дешифрование
+language = input()  # Выбор языка en/ru
+shift_step = int(input())  # Шаг сдвига
+user_message = input()  # Вводимый текст
 
 if language == 'en':
     alphabet_lenght = 26
@@ -28,39 +25,45 @@ elif language == 'ru':
     alph_upper = [chr(i) for i in range(1040, 1072)]
 
 
-
-def decryption_caesar (message, step): # Расшифрование английского текста
+def decryption_caesar(message, step):  # Расшифрование английского текста
     decrypted_message = ''
     for i in range(len(message)):
         if message[i].isalpha():
             if message[i].isupper():
-                eng_character = alph_upper.index(message[i]) 
-                x = (eng_character - step) % alphabet_lenght # расшифрованный символ upper
+                eng_character = alph_upper.index(message[i])
+                # расшифрованный символ upper
+                x = (eng_character - step) % alphabet_lenght
                 decrypted_message += alph_upper[x]
             elif message[i].islower():
                 eng_character = alph_lower.index(message[i])
-                x = (eng_character - step) % alphabet_lenght # расшифрованный символ lower
+                # расшифрованный символ lower
+                x = (eng_character - step) % alphabet_lenght
                 decrypted_message += alph_lower[x]
         else:
             decrypted_message += message[i]
     return decrypted_message
 
-def encryption_caesar (message, step): # Расшифрование английского текста
+
+def encryption_caesar(message, step):  # Расшифрование английского текста
     encrypted_message = ''
     for i in range(len(message)):
         if message[i].isalpha():
             if message[i].isupper():
-                eng_character = alph_upper.index(message[i]) 
-                x = (eng_character + step) % alphabet_lenght # расшифрованный символ upper
+                eng_character = alph_upper.index(message[i])
+                # расшифрованный символ upper
+                x = (eng_character + step) % alphabet_lenght
                 encrypted_message += alph_upper[x]
             elif message[i].islower():
                 eng_character = alph_lower.index(message[i])
-                x = (eng_character + step) % alphabet_lenght # расшифрованный символ lower
+                # расшифрованный символ lower
+                x = (eng_character + step) % alphabet_lenght
                 encrypted_message += alph_lower[x]
         else:
             encrypted_message += message[i]
     return encrypted_message
 
 
-#print(decryption_caesar(user_message, shift_step))
-print(encryption_caesar(user_message, shift_step))
+print(decryption_caesar(user_message, shift_step))
+#print(encryption_caesar(user_message, shift_step))
+#for i in range(25):
+#    print(decryption_caesar(user_message, i))
