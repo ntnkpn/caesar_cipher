@@ -9,10 +9,14 @@
 # k - ключ (шаг сдвига)
 #
 
-
+print('Программа шифрования/дешифрования сообщений с помощью шифра Цезаря'.center(230))
+print('Сперва выберете: шифруем или дешифруем текст? Напечатайте слово close или open ниже:')
 direction = input()  # Шифрование или дешифрование
+print('Выберите язык вводимого сообщения: английский - напечатайте en, или русский - напечатайте ru:')
 language = input()  # Выбор языка en/ru
+print('Выберите шаг сдвига шифра. Ниже введите число:')
 shift_step = int(input())  # Шаг сдвига
+print('И, наконец, введите или вставьте сам текст сообщения:')
 user_message = input()  # Вводимый текст
 
 if language == 'en':
@@ -63,7 +67,5 @@ def encryption_caesar(message, step):  # Расшифрование англий
     return encrypted_message
 
 
-print(decryption_caesar(user_message, shift_step))
-#print(encryption_caesar(user_message, shift_step))
-#for i in range(25):
-#    print(decryption_caesar(user_message, i))
+print('Результат:', decryption_caesar(user_message, shift_step))
+print('Результат:', encryption_caesar(user_message, shift_step))
